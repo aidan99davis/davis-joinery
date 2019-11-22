@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <router-link :to="to">{{label}}</router-link>
+    <div >
+        <router-link class="navlink" :to="to">{{label}}</router-link>
     </div>
 </template>
 
@@ -19,5 +19,13 @@
         text-align: center;
         text-decoration: none;
         display: inline-block;
+    }
+    .navlink {
+        padding: 30px;
+        cursor: pointer;
+    }
+    .navlink:hover {
+        padding: 30px;
+        background-color: #885053;
     }
 </style>

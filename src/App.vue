@@ -1,19 +1,9 @@
 <template>
   <div id="app">
     <div class="container">
-
-      <b-row class="row">
-        <b-col cols="2">
-          <nav-bar :pages="pages">
-          </nav-bar>
-        </b-col>
-        <b-col cols="8">
-          <router-view/>
-        </b-col>
-        <b-col cols="2">
-          <!--Ads here?-->
-        </b-col>
-      </b-row>
+      <nav-bar :pages="pages" class="navigation">
+      </nav-bar>
+      <router-view class="page"></router-view>
     </div>
   </div>
 </template>
@@ -31,7 +21,8 @@
                 {to: '/', label: 'Home'},
                 {to:'/About', label: 'About'},
                 {to: '/Contact', label: 'Contact Us'},
-                {to: '/Schedule', label: 'Schedule'}
+                {to: '/Gallery', label: 'Gallery'},
+                // {to: '/Schedule', label: 'Schedule'}
             ]
         }
       }
@@ -41,8 +32,11 @@
 <style lang="less">
   html, body, .container  {
     height: 100%;
-    ladding-left: 0 !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
     margin-left: 0 !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
   }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -60,5 +54,20 @@
     width: 100%;
     padding-right: 0px !important;
     padding-left: 0px !important;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+  }
+
+  .page {
+    margin-top: 35px; /* Add a top margin to avoid content overlay */
+    background-color: #e6e6e6;
+  }
+
+  .navigation {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed !important; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
   }
 </style>

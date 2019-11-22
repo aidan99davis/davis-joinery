@@ -1,9 +1,17 @@
 <template>
-    <div class="navigation-body">
-        <div v-for="link in pages" class="navigation-item">
+    <nav class="navbar navbar-expand-sm navigation-body navbar-dark">
+    <nav-link to="/" :label="'Artisan Shopfitting and Joinery Ltd'"></nav-link>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+        <li v-for="link in pages" class="navigation-item">
             <nav-link :to="link.to" :label="link.label"></nav-link>
-        </div>
-    </div>
+        </li>  
+        </ul>
+    </div>  
+    </nav>
 </template>
 
 <script>
@@ -19,17 +27,12 @@
 
 <style scoped>
     .navigation-body {
-        height: 100%;
+        padding-top: 0;
+        padding-bottom: 0;
         width: 100%;
         background-color: #FE5F55;
     }
-    .navigation-item {
-        padding: 30px;
-    }
-    .navigation-item:hover {
-        padding: 30px;
-        background-color: #885053;
-    }
+    
 
 
 
