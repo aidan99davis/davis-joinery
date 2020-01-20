@@ -33,5 +33,9 @@ namespace ArtisanJoinery.Context
         }
 
         public DbSet<Appointment> Appointments { get; set; }
+
+        public void test()
+        {
+        }
     }
 }
