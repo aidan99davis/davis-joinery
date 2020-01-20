@@ -22,7 +22,7 @@
                 {to:'/About', label: 'About'},
                 {to: '/Contact', label: 'Contact Us'},
                 {to: '/Gallery', label: 'Gallery'},
-                // {to: '/Schedule', label: 'Schedule'}
+                {to: '/Schedule', label: 'Schedule'}
             ]
         }
       }
@@ -69,5 +69,6 @@
     position: fixed !important; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
+    z-index: 100;
   }
 </style>

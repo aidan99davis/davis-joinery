@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="header"><img src="../../assets/images/BespokeKitchen-01.jpg" width="100%" height="20%" alt="Bespoke Kitchen"></div>
+        <div class="header"></div>
         <router-view />
         <div class="footer"></div>
     </div>

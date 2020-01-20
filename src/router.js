@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Parent from '@/components/navigation/Parent'
 
 Vue.use(Router)
 
@@ -12,13 +11,13 @@ export default new Router({
     {
         path: '/',
         name: 'default',
-        component: Parent,
+        component: () => import(/* webpackChunkName: "parent" */ './components/navigation/Parent.vue'),
         props: true,
         children: [
             {
                 path: '',
                 name: 'home',
-                component: Home,
+                component: () => import(/* webpackChunkName: "home" */ './views/Home.vue'),
                 props: true
             },
             {
@@ -37,7 +36,7 @@ export default new Router({
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
-                component: () => import(/* webpackChunkName: "about" */ './views/Contact.vue')
+                component: () => import(/* webpackChunkName: "contact" */ './views/Contact.vue')
             },
             {
                 path: '/schedule',
@@ -46,7 +45,7 @@ export default new Router({
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
-                component: () => import(/* webpackChunkName: "about" */ './views/Schedule.vue')
+                component: () => import(/* webpackChunkName: "schedule" */ './views/Schedule.vue')
             },
             {
                 path: '/gallery',
@@ -55,7 +54,7 @@ export default new Router({
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
-                component: () => import(/* webpackChunkName: "about" */ './views/Gallery.vue')
+                component: () => import(/* webpackChunkName: "gallery" */ './views/Gallery.vue')
             }
         ]
     },

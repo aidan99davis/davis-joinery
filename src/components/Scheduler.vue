@@ -47,6 +47,8 @@
 </template>
 
 <script>
+
+  import axios from "axios";
     export default {
         name: "Scheduler",
         computed: {
@@ -54,13 +56,34 @@
                 return this.appointments
             }
         },
+        beforeMount() {
+            this.getAppointments()
+        },
         methods: {
+            getAppointments() {
+                axios({ method: "GET", "url": "http://localhost:62376/api/Appointments" }).then(result => {
+                    var appointmentDtos = result.data.results;
+                    console.log(result.data)
+                    result.data.forEach(element => {
+                        var appointment = {
+                        title     : element.name,
+                        start     : element.whenStart,
+                        end       : element.whenEnd,
+                        cssClass  : ['family', 'career'],
+                        YOUR_DATA : {}
+                        }
+                        this.appointments.push(appointment)
+                    });
+                }, error => {
+                    console.error(error);
+                });
+            },
             clearCommand() {
                 this.createCommand = {
                     name: '',
                     address: '',
                     startDate: '',
-                    cssClass: 'family',
+                    type: 1,
                     endDate: ''
                 }
             },

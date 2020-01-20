@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-        <li v-for="link in pages" class="navigation-item">
+        <li v-for="link in pages">
             <nav-link :to="link.to" :label="link.label"></nav-link>
         </li>  
         </ul>
@@ -29,11 +29,8 @@
     .navigation-body {
         padding-top: 0;
         padding-bottom: 0;
+        padding-left: 0;
         width: 100%;
         background-color: #FE5F55;
     }
-    
-
-
-
 </style>
