@@ -33,10 +33,10 @@
                 <br>
                 <b-jumbotron>
                     <label>Start Date</label>
-                    <b-form-input type="date" class="mb-2 mr-sm-2 mb-sm-0" v-model="createCommand.startDate" />
+                    <b-form-input type="datetime" class="mb-2 mr-sm-2 mb-sm-0" v-model="createCommand.startDate" />
 
                     <label>End Date</label>
-                    <b-form-input type="date" class="mb-2 mr-sm-2 mb-sm-0" v-model="createCommand.endDate"/>
+                    <b-form-input type="datetime" class="mb-2 mr-sm-2 mb-sm-0" v-model="createCommand.endDate"/>
 
                 </b-jumbotron>
 
