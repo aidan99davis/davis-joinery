@@ -22,6 +22,17 @@ namespace ArtisanJoinery.Models
         public DateTime whenStart { get; set; }
         public DateTime whenEnd { get; set; }
         public AppointmentType type { get; set; }
+
+        public Appointment(string name, string location, DateTime whenStart, DateTime whenEnd, AppointmentType type)
+        {
+            this.name = name;
+            this.location = location;
+            this.whenStart = whenStart;
+            this.whenEnd = whenEnd;
+            this.type = type;
+
+
+        }
     }
 
     

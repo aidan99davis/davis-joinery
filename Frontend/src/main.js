@@ -19,6 +19,7 @@ import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
+
 //components.install(Vue);
 
 new Vue({

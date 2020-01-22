@@ -5,7 +5,7 @@
                     :events="events"
                     locale="en"
                     @eventClick="(event) => openEvent(event)"
-                    @dayClick="(day, event) => scheduleEvent(day, event)"/>
+                    @dayClick="(day, event) => openEvent(day, event)"/>
         </div>
         <br>
         <b-button id="newCalenderRecord" pill v-b-modal.modal-1>+</b-button>
@@ -28,7 +28,7 @@
                             placeholder="Enter something..."
                             rows="3"
                             max-rows="6"
-                            v-model="createCommand.address"/>
+                            v-model="createCommand.location"/>
                 </b-input-group>
                 <br>
                 <b-jumbotron>
@@ -40,15 +40,16 @@
 
                 </b-jumbotron>
 
-                <b-button variant="primary" @click="createRecord">Save</b-button>
+                <b-button variant="primary" @click="createAppointment">Save</b-button>
             </b-form>
         </b-modal>
     </div>
 </template>
 
 <script>
-
-  import axios from "axios";
+import createAppointmentCommand from '../commands/createAppointmentCommand'
+import ClientManager from "../client/ClientManager";
+import axios from 'axios'
     export default {
         name: "Scheduler",
         computed: {
@@ -61,7 +62,7 @@
         },
         methods: {
             getAppointments() {
-                axios({ method: "GET", "url": "http://localhost:62376/api/Appointments" }).then(result => {
+                axios({ method: "GET", "url": "http://localhost:62376/api/Appointments/" }).then(result => {
                     var appointmentDtos = result.data.results;
                     console.log(result.data)
                     result.data.forEach(element => {
@@ -69,7 +70,8 @@
                         title     : element.name,
                         start     : element.whenStart,
                         end       : element.whenEnd,
-                        cssClass  : ['family', 'career'],
+                        location  : element.location,
+                        cssClass  : element.type != 1? 'family' : 'career',
                         YOUR_DATA : {}
                         }
                         this.appointments.push(appointment)
@@ -79,13 +81,7 @@
                 });
             },
             clearCommand() {
-                this.createCommand = {
-                    name: '',
-                    address: '',
-                    startDate: '',
-                    type: 1,
-                    endDate: ''
-                }
+                this.createCommand = new createAppointmentCommand()
             },
             createAppointment() {
                 var i = this.appointments.length
@@ -93,10 +89,10 @@
                     title: this.createCommand.name,
                     start: this.createCommand.startDate,
                     end: this.createCommand.endDate,
-                    YOUR_DATA: {
-                        address: this.createCommand.address
-                    }
+                    location: this.createCommand.location
                 }
+                ClientManager.post('/Appointments/', this.createCommand)
+                // this.createCommand.execute()
             },
             openEvent(event)
             {
@@ -107,21 +103,15 @@
                 this.creatingEvent = true
                 console.log(this.appointments)
 
-                createAppointment();
+                this.createAppointment();
                 console.log(this.appointments)
-                clearCommand();
+                this.clearCommand();
                 this.creatingEvent = false
             }
         },
         data() {
             return {
-                createCommand: {
-                    name: '',
-                    address: '',
-                    startDate: '',
-                    cssClass  : 'family',
-                    endDate: ''
-                },
+                createCommand: new createAppointmentCommand(),
                 appointments: [
                     {
                         title     :  'event1',

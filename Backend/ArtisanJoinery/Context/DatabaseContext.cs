@@ -37,5 +37,12 @@ namespace ArtisanJoinery.Context
         public void test()
         {
         }
+
+        public void CreateAppointment(string name, string location, DateTime startDate, DateTime endDate, Appointment.AppointmentType type)
+        {
+            var Appointment = new Appointment(name, location, startDate,endDate,type);
+            Appointments.Add(Appointment);
+            SaveChanges();
+        }
     }
 }

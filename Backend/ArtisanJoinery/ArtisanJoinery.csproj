@@ -101,6 +101,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Commands\CreateEventCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Context\Populator.cs" />
     <Compile Include="Controllers\AppointmentsController.cs" />

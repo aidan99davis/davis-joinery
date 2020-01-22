@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Newtonsoft.Json.Serialization;
 
 namespace ArtisanJoinery
@@ -11,8 +12,8 @@ namespace ArtisanJoinery
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
-            config.EnableCors();
+            var corsAttr = new EnableCorsAttribute("http://localhost:8080", "*", "*");
+            config.EnableCors(corsAttr);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
