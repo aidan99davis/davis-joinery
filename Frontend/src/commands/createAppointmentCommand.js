@@ -1,26 +1,25 @@
-export default class createAppointmentCommand {
+import ClientManager from '../client/ClientManager'
+class createAppointmentCommand {
     constructor() {
-        return {
-            name: '',
-            location: '',
-            startDate: '',
-            type: 1,
-            endDate: ''
-        }
+        this.name = '',
+        this.location =  '',
+        this.startDate = '',
+        this.type = 1,
+        this.endDate = ''
     }    
-    
-}
 
-createAppointmentCommand.execute = function() {
-    axios({
-        method: 'post',
-        url: 'http://localhost:62376/api/Appointments/Post',
-        data: {
+    execute() {
+    
+        return ClientManager.post('/Appointments/', {
             name: this.name,
             location: this.location,
             startDate: this.startDate,
             type: this.type,
             endDate: this.endDate
-        }
-        });
+        })
+    }
+    
+    
 }
+
+export default createAppointmentCommand;

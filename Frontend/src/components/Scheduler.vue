@@ -91,8 +91,7 @@ import axios from 'axios'
                     end: this.createCommand.endDate,
                     location: this.createCommand.location
                 }
-                ClientManager.post('/Appointments/', this.createCommand)
-                // this.createCommand.execute()
+                this.createCommand.execute()
             },
             openEvent(event)
             {
@@ -137,7 +136,6 @@ import axios from 'axios'
 
     .schedulerBody {
         height: 75% !important;
-
     }
 
 </style>

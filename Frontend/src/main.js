@@ -7,7 +7,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // import components from './components/components'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
-
+import VueExcelEditor from 'vue-excel-editor'
+ 
+Vue.use(VueExcelEditor)
 Vue.use(VueMaterial)
 
 import fullCalendar from 'vue-fullcalendar'

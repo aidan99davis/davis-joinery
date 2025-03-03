@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: "Parent"
+        name: "NavParent"
     }
 </script>
 

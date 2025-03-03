@@ -1,46 +1,48 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
+const routes = [
     {
         path: '/',
         name: 'default',
-        component: () => import(/* webpackChunkName: "parent" */ './components/navigation/Parent.vue'),
+        component: () => import(/* webpackChunkName: "parent" */ './components/navigation/NavParent.vue'),
         props: true,
         children: [
             {
                 path: '',
                 name: 'home',
+                label: 'Home',
                 component: () => import(/* webpackChunkName: "home" */ './views/Home.vue'),
                 props: true
             },
             {
-                path: '/about',
-                name: 'about',
+                path: '/profile',
+                name: 'profile',
+                label: 'Profile',
                 props: true,
+                authRoute: true,
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
-                component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+                component: () => import(/* webpackChunkName: "schedule" */ './views/Schedule.vue')
             },
             {
-                path: '/contact',
-                name: 'contact',
+                path: '/login',
+                name: 'login',
+                label: 'Login',
                 props: true,
+                authRoute: true,
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
-                component: () => import(/* webpackChunkName: "contact" */ './views/Contact.vue')
+                component: () => import(/* webpackChunkName: "schedule" */ './views/Schedule.vue')
             },
             {
-                path: '/schedule',
+                path: 'schedule',
                 name: 'schedule',
+                label: 'Schedule',
                 props: true,
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
@@ -48,16 +50,72 @@ export default new Router({
                 component: () => import(/* webpackChunkName: "schedule" */ './views/Schedule.vue')
             },
             {
-                path: '/gallery',
-                name: 'gallery',
+                path: 'timesheet',
+                name: 'timesheet',
+                label: 'Timesheet',
                 props: true,
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
-                component: () => import(/* webpackChunkName: "gallery" */ './views/Gallery.vue')
+                component: () => import(/* webpackChunkName: "gallery" */ './views/Timesheets.vue')
+            },
+            {
+                path: 'administration',
+                label: 'Admin',
+                component: () => import(/* webpackChunkName: "gallery" */ './components/Parent.vue'),
+                children: [
+                    {
+                        path: 'clients',
+                        name: 'clients',
+                        label: 'Clients',
+                        props: true,
+                        // route level code-splitting
+                        // this generates a separate chunk (about.[hash].js) for this route
+                        // which is lazy-loaded when the route is visited.
+                        component: () => import(/* webpackChunkName: "gallery" */ './views/Clients.vue')
+                    },
+                    {
+                        path: 'projects',
+                        name: 'projects',
+                        label: 'Projects',
+                        props: true,
+                        // route level code-splitting
+                        // this generates a separate chunk (about.[hash].js) for this route
+                        // which is lazy-loaded when the route is visited.
+                        component: () => import(/* webpackChunkName: "gallery" */ './views/Projects.vue')
+                    },
+                    {
+                        path: 'staff',
+                        name: 'staff',
+                        label: 'Staff',
+                        props: true,
+                        // route level code-splitting
+                        // this generates a separate chunk (about.[hash].js) for this route
+                        // which is lazy-loaded when the route is visited.
+                        component: () => import(/* webpackChunkName: "gallery" */ './views/Staff.vue')
+                    },
+                    {
+                        path: 'skills',
+                        name: 'skills',
+                        label: 'Skills',
+                        props: true,
+                        // route level code-splitting
+                        // this generates a separate chunk (about.[hash].js) for this route
+                        // which is lazy-loaded when the route is visited.
+                        component: () => import(/* webpackChunkName: "gallery" */ './views/Skills.vue')
+                    }                    
+                ]
             }
         ]
     },
+  ];
 
-  ]
+
+export default new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: routes
+
 })
+
+export {routes};
