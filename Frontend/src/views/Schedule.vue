@@ -1,6 +1,8 @@
 <template>
     <div>
+        <!-- add management only schedule creation and viewing of other peoples schedule -->
         <scheduler />
+        <!-- request time off, specify availability, etc -->
     </div>
 </template>
 
